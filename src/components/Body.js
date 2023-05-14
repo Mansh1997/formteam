@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 function Body() {
 
     const [currentpage, setcurrentpage]= useState(1);
-    const [cardsperpage, setcardsperpage]= useState(20);
+    const [cardsperpage]= useState(20);
     const [data,setdata]= useState(Data);
     const [filters,setfilters]= useState(false);
     const [teamdata, setteamdata]= useState([]);
@@ -26,9 +26,6 @@ function Body() {
     const indexoffirstcard= indexoflastcard-cardsperpage;
     const currentdata= data.slice(indexoffirstcard, indexoflastcard);
 
-    const filterdata= ()=>{
-        console.log(searchvalue);
-    }
 
     useEffect(()=>{
         let truedata= Data;
@@ -50,6 +47,7 @@ function Body() {
         for(let i=0;i<6;i++){
             if(filtervalues[i].value===true){
                 gender=true;
+                // eslint-disable-next-line
                 truedata.map((obj)=>{
                     if(obj.gender===filtervalues[i].name){
                         genderfilter.push(obj);
@@ -67,6 +65,7 @@ function Body() {
         for(let i=6;i<13;i++){
             if(filtervalues[i].value===true){
                 domain=true;
+                // eslint-disable-next-line
                 truedata.map((obj)=>{
                     if(obj.domain.replace(/ +/g,'')===filtervalues[i].name){
                         domainfilter.push(obj);
@@ -84,6 +83,7 @@ function Body() {
             if(filtervalues[i].value===true){
                 available=true;
                 if(filtervalues[i].name==="Available"){
+                    // eslint-disable-next-line
                     truedata.map((obj)=>{
                         if(obj.available===true){
                             availablefilter.push(obj);
@@ -91,6 +91,7 @@ function Body() {
                     })
                 }
                 else{
+                    // eslint-disable-next-line
                     truedata.map((obj)=>{
                         if(obj.available===false){
                             availablefilter.push(obj);
